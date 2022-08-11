@@ -20,7 +20,7 @@ export const SignUpPage = () => {
     });
     const { token } = response.data;
     setToken(token);
-    history.push("/");
+    history.push("/please-verify");
   };
 
   return (
