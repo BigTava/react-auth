@@ -5,8 +5,10 @@ import { updateUserInfoRoute } from "./updateUserRoute";
 import { testEmailRoute } from "./testEmailRoute";
 import { verifyEmailRoute } from "./verifyEmailRoute";
 import { forgotPasswordRoute } from "./forgotPasswordRoute";
+import { resetPasswordRoute } from "./resetPasswordRoute";
 
 export const routes = [
+  resetPasswordRoute,
   forgotPasswordRoute,
   verifyEmailRoute,
   updateUserInfoRoute,
