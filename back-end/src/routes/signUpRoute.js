@@ -10,6 +10,7 @@ export const signUpRoute = {
   path: "/api/signup",
   method: "post",
   handler: async (req, res) => {
+    /************* AUTH IN AWS COGNITO *************/
     const { email, password } = req.body;
 
     const attributes = [
