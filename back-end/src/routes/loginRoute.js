@@ -53,9 +53,13 @@ export const logInRoute = {
 
     if (!user) return res.sendStatus(401);
 
-    const { _id: id, isVerified, passwordHash, info } = user;
+    const { _id: id, isVerified, passwordHash, salt, info } = user;
+    const pepper = process.env.PEPPER_STRING;
 
-    const isCorrect = await bcrypt.compare(password, passwordHash);
+    const isCorrect = await bcrypt.compare(
+      salt + password + pepper,
+      passwordHash
+    );
 
     if (isCorrect) {
       jwt.sign(
@@ -64,7 +68,7 @@ export const logInRoute = {
         { expiresIn: "2d" },
         (err, token) => {
           if (err) {
-            res.status(500).json(err);
+            res.sendStatus(500);
           }
 
           res.status(200).json({ token });

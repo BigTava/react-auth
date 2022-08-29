@@ -8,6 +8,7 @@ export const verifyEmailRoute = {
   path: "/api/verify-email",
   method: "put",
   handler: async (req, res) => {
+    /************* AUTH IN AWS COGNITO *************/
     const { email, verificationString } = req.body;
 
     new CognitoUser({ Username: email, Pool: awsUserPool }).confirmRegistration(
